@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0w05el37y4p4"]
+
+[ext_resource type="Script" path="res://interactibleScript.gd" id="1_8obs0"]
+
+[resource]
+script = ExtResource("1_8obs0")
+name = ""
+positivePolarity = false
