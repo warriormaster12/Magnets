@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpd7ytv61ilth"]
+
+[ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_2uao6"]
+[ext_resource type="Texture2D" uid="uid://63j70co5myw8" path="res://icon.svg" id="2_63x6k"]
+[ext_resource type="Script" path="res://Scripts/playerSprite2DScript.gd" id="3_nnshq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhen"]
+
+[node name="Player1" type="CharacterBody2D"]
+script = ExtResource("1_2uao6")
+polarity = 1
+speed = 400
+acceleration = 500
+deceleration = 1000
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("thisSprite2D")]
+texture = ExtResource("2_63x6k")
+script = ExtResource("3_nnshq")
+thisSprite2D = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uyhen")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_uyhen")
