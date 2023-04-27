@@ -3,13 +3,19 @@ extends Sprite2D
 @export var thisSprite2D: Sprite2D
 
 # Turning speed variables
-@export var turn_speed = 2.0
 @export var max_turn_speed = 10.0
 @export var min_turn_speed = 2.0
 
+# Magnet ray parameters
+@export var magnetPushStrength: float
+@export var magnetPullStrength: float
+@export var magnetRayLength: float
+@export var magnetRayWidth: float
+@onready var polarity = get_parent().polarity
+@export var rayTexture: Texture2D
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-		
 	# Get the direction to the mouse
 	var mouse_pos = get_global_mouse_position()
 	var direction = mouse_pos - global_position
@@ -36,3 +42,6 @@ func _process(delta):
 
 	# Rotate the child Sprite2D node
 	thisSprite2D.rotation = new_rotation
+	
+	# Creates a detection area infront of the Sprite2D in the direction its facing
+	

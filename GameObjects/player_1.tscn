@@ -17,11 +17,14 @@ deceleration = 1000
 texture = ExtResource("2_63x6k")
 script = ExtResource("3_nnshq")
 thisSprite2D = NodePath(".")
+rayTexture = ExtResource("2_63x6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_uyhen")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_uyhen")
