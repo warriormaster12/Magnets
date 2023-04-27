@@ -1,29 +1,32 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpd7ytv61ilth"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_2uao6"]
-[ext_resource type="Texture2D" uid="uid://63j70co5myw8" path="res://icon.svg" id="2_63x6k"]
-[ext_resource type="Script" path="res://Scripts/playerSprite2DScript.gd" id="3_nnshq"]
+[ext_resource type="Texture2D" uid="uid://dlswpt7ntdutq" path="res://icon.svg" id="2_63x6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhen"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ug8av"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
 
 [node name="Player1" type="CharacterBody2D"]
 script = ExtResource("1_2uao6")
 polarity = 1
-acceleration = 500
-deceleration = 500
 
-[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("thisSprite2D")]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_63x6k")
-script = ExtResource("3_nnshq")
-thisSprite2D = NodePath(".")
-rayTexture = ExtResource("2_63x6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_uyhen")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_uyhen")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ug8av")

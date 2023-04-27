@@ -9,15 +9,19 @@ enum POLARITIES{Negative=0, Positive=1}
 @export var player: PLAYER
 
 # Movement speed variables
-@export var speed = 200
-@export var acceleration = 1000
-@export var deceleration = 2000
+@export var speed:float = 200
+@export var acceleration:float = 1000
+@export var deceleration:float = 2000
+
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
 
 # Turning speed variables
 @export var max_turn_speed = 10.0
 @export var min_turn_speed = 2.0
 
 func _process(delta):
+	if not is_multiplayer_authority(): return
 	# Check for player movement input
 	var input_vector = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"):
