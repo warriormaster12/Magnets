@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4o2d40331tmd"]
+[gd_scene load_steps=7 format=3 uid="uid://c4o2d40331tmd"]
 
 [ext_resource type="PackedScene" uid="uid://dpd7ytv61ilth" path="res://GameObjects/player_1.tscn" id="1_k1x30"]
+[ext_resource type="Script" path="res://Scripts/interactibleScript.gd" id="3_7ewnm"]
 [ext_resource type="Texture2D" uid="uid://63j70co5myw8" path="res://icon.svg" id="3_shjwo"]
 
 [sub_resource type="TileSet" id="TileSet_b23ip"]
@@ -36,3 +37,5 @@ shape = SubResource("RectangleShape2D_rerco")
 
 [node name="Sprite2D" type="Sprite2D" parent="Box"]
 texture = ExtResource("3_shjwo")
+script = ExtResource("3_7ewnm")
+polarity = 2
