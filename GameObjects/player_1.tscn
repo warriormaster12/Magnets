@@ -28,5 +28,6 @@ shape = SubResource("RectangleShape2D_uyhen")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_uyhen")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Area2D"]
+root_path = NodePath("../..")
 replication_config = SubResource("SceneReplicationConfig_ug8av")
