@@ -53,4 +53,3 @@ spawn_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/HostJoin/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/HostJoin/MarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
-[connection signal="text_changed" from="CanvasLayer/HostJoin/MarginContainer/VBoxContainer/Address" to="." method="_on_address_text_changed"]

@@ -6,17 +6,20 @@ extends Node
 
 const PLAYER = preload("res://GameObjects/player_1.tscn")
 const PORT:int = 9999
-var address:String = ""
 var enet_peer := ENetMultiplayerPeer.new()
+var upnp := UPNP.new()
 
-
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		upnp.delete_port_mapping(PORT)
 func _unhandled_input(event)->void:
 	if Input.is_action_just_pressed("ui_cancel"):
+		upnp.delete_port_mapping(PORT)
 		get_tree().quit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,11 +42,7 @@ func _on_host_pressed():
 
 func _on_join_pressed():
 	host_join.hide()
-	
-	if not address.is_empty():
-		var err:Error = enet_peer.create_client(address, PORT)
-		if err != OK:
-			print("can't connect to this ip address ",err)
+	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	
 
@@ -58,11 +57,9 @@ func remove_player(peer_id:int)->void:
 		player.queue_free()
 
 
-func _on_address_text_changed(new_text: String) -> void:
-	address = new_text
+
 
 func upnp_setup():
-	var upnp := UPNP.new()
 	var discover_result:int = upnp.discover()
 	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
 		"UPNP Discover Failed! Error %s" % discover_result)
@@ -74,4 +71,4 @@ func upnp_setup():
 	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
 		"UPNP Port Mapping Failed! Error %s" % map_result)
 	
-	print("Success! Join Address: %s" % upnp.query_external_address())
+	print("Success! Join Address For Online: ",upnp.query_external_address(), " Or For Lan: ", IP.get_local_addresses()[0])
