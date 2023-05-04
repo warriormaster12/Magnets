@@ -29,22 +29,23 @@ func _process(delta):
 
 func _on_host_pressed():
 	host_join.hide()
-	
+
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
-	
+
 	add_player(multiplayer.get_unique_id())
-	
+
 	upnp_setup()
+	print("Success! Join Address For Online: ",upnp.query_external_address(), " Or For Lan: ", IP.get_local_addresses()[0])
 
 
 func _on_join_pressed():
 	host_join.hide()
 	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
-	
+
 
 
 func add_player(peer_id:int)->void:
@@ -59,16 +60,17 @@ func remove_player(peer_id:int)->void:
 
 
 
-func upnp_setup():
+func upnp_setup()->void:
 	var discover_result:int = upnp.discover()
-	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Discover Failed! Error %s" % discover_result)
-	
-	assert(upnp.get_gateway() and upnp.get_gateway().is_valid_gateway(), \
-		"UPNP Failed To Discover Valid Gateway")
-	
+	if discover_result != UPNP.UPNP_RESULT_SUCCESS:
+		print("UPNP Discover Failed! Error %s" % discover_result)
+		return
+
+	if upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
+		print("UPNP Failed To Discover Valid Gateway")
+		return
+
 	var map_result:int = upnp.add_port_mapping(PORT)
-	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Port Mapping Failed! Error %s" % map_result)
-	
-	print("Success! Join Address For Online: ",upnp.query_external_address(), " Or For Lan: ", IP.get_local_addresses()[0])
+	if map_result != UPNP.UPNP_RESULT_SUCCESS:
+		print("UPNP Port Mapping Failed! Error %s" % map_result)
+		return
