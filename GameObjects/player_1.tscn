@@ -12,8 +12,11 @@ properties/0/sync = true
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/sync = true
+properties/2/path = NodePath(".:polarity")
+properties/2/spawn = true
+properties/2/sync = true
 
-[node name="Player1" type="CharacterBody2D"]
+[node name="Player1" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_2uao6")
 polarity = 1
 
@@ -30,3 +33,8 @@ shape = SubResource("RectangleShape2D_uyhen")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ug8av")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -3)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0

@@ -13,6 +13,11 @@ enum POLARITIES{Negative=0, Positive=1}
 @export var acceleration:float = 1000
 @export var deceleration:float = 2000
 
+@rpc("call_local")
+func set_polarity(value:POLARITIES)->void:
+	polarity = value
+	print(polarity)
+
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 

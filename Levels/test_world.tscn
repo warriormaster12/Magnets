@@ -48,8 +48,9 @@ placeholder_text = "Enter Address to join"
 alignment = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://GameObjects/player_1.tscn", "res://GameObjects/player_1.tscn")
+_spawnable_scenes = PackedStringArray("res://GameObjects/player_1.tscn")
 spawn_path = NodePath("..")
+spawn_limit = 2
 
 [connection signal="pressed" from="CanvasLayer/HostJoin/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/HostJoin/MarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
