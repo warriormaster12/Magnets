@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4o2d40331tmd"]
+[gd_scene load_steps=8 format=3 uid="uid://c4o2d40331tmd"]
 
 [ext_resource type="PackedScene" uid="uid://dpd7ytv61ilth" path="res://GameObjects/player_1.tscn" id="1_k1x30"]
 [ext_resource type="Script" path="res://Scripts/interactibleScript.gd" id="3_7ewnm"]
-[ext_resource type="Texture2D" uid="uid://dlwd4gr4ac7kk" path="res://icon.svg" id="3_shjwo"]
+[ext_resource type="Texture2D" uid="uid://dapl2240oaelm" path="res://icon.svg" id="3_shjwo"]
 
 [sub_resource type="TileSet" id="TileSet_b23ip"]
 
@@ -11,6 +11,8 @@ rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rerco"]
 size = Vector2(116, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ing4o"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -39,3 +41,13 @@ shape = SubResource("RectangleShape2D_rerco")
 texture = ExtResource("3_shjwo")
 script = ExtResource("3_7ewnm")
 polarity = 2
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(100, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_ing4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+texture = ExtResource("3_shjwo")
