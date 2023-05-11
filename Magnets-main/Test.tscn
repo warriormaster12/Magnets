@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4o2d40331tmd"]
+
+[ext_resource type="PackedScene" uid="uid://dpd7ytv61ilth" path="res://GameObjects/player_1.tscn" id="1_k1x30"]
+[ext_resource type="Script" path="res://Scripts/interactibleScript.gd" id="3_7ewnm"]
+[ext_resource type="Texture2D" uid="uid://dvg1y8wyaa3gf" path="res://icon.svg" id="3_shjwo"]
+
+[sub_resource type="TileSet" id="TileSet_b23ip"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ri6d7"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rerco"]
+size = Vector2(116, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ing4o"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_b23ip")
+format = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Player1" parent="." instance=ExtResource("1_k1x30")]
+
+[node name="Box" type="RigidBody2D" parent="."]
+position = Vector2(300, 200)
+mass = 50.0
+inertia = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ri6d7")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(2, -1.5)
+shape = SubResource("RectangleShape2D_rerco")
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+texture = ExtResource("3_shjwo")
+script = ExtResource("3_7ewnm")
+polarity = 2
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(100, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_ing4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+texture = ExtResource("3_shjwo")
