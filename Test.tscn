@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpd7ytv61ilth" path="res://GameObjects/player_1.tscn" id="1_k1x30"]
 [ext_resource type="Script" path="res://Scripts/interactibleScript.gd" id="3_7ewnm"]
-[ext_resource type="Texture2D" uid="uid://dapl2240oaelm" path="res://icon.svg" id="3_shjwo"]
+[ext_resource type="Texture2D" uid="uid://dvg1y8wyaa3gf" path="res://icon.svg" id="3_shjwo"]
 
 [sub_resource type="TileSet" id="TileSet_b23ip"]
 
