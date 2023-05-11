@@ -86,3 +86,5 @@ func _process(delta):
 	# Rotate the child Sprite2D node
 	self.rotation = new_rotation
 	
+	# Creates a detection area infront of the Sprite2D in the direction its facing
+	
