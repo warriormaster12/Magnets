@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4o2d40331tmd"]
+[gd_scene load_steps=11 format=3 uid="uid://6xxnddxwunb1"]
 
 [ext_resource type="Script" path="res://Test.gd" id="1_jxbuf"]
 [ext_resource type="PackedScene" uid="uid://dpd7ytv61ilth" path="res://GameObjects/player_1.tscn" id="1_k1x30"]
@@ -31,11 +31,6 @@ format = 2
 
 [node name="Box" type="RigidBody2D" parent="." groups=["TriggersPlates"]]
 position = Vector2(300, 200)
-<<<<<<< HEAD
-=======
-collision_layer = 11
-collision_mask = 11
->>>>>>> bdd2000 (Player Movement Fixes)
 mass = 50.0
 inertia = 10.0
 physics_material_override = SubResource("PhysicsMaterial_ri6d7")
@@ -43,7 +38,6 @@ gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("3_7ewnm")
-polarity = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
 position = Vector2(2, -1.5)
@@ -52,30 +46,6 @@ shape = SubResource("RectangleShape2D_rerco")
 [node name="Sprite2D" type="Sprite2D" parent="Box"]
 texture = ExtResource("3_shjwo")
 
-<<<<<<< HEAD
-=======
-[node name="Box2" type="RigidBody2D" parent="." groups=["TriggersPlates"]]
-position = Vector2(-300, 200)
-collision_layer = 11
-collision_mask = 11
-mass = 50.0
-inertia = 10.0
-physics_material_override = SubResource("PhysicsMaterial_ri6d7")
-gravity_scale = 0.0
-lock_rotation = true
-linear_damp = 5.0
-script = ExtResource("3_7ewnm")
-polarity = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box2"]
-position = Vector2(2, -1.5)
-shape = SubResource("RectangleShape2D_rerco")
-
-[node name="Sprite2D" type="Sprite2D" parent="Box2"]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("3_shjwo")
-
->>>>>>> bdd2000 (Player Movement Fixes)
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(100, 200)
 
