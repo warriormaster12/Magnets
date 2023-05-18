@@ -14,6 +14,7 @@ func _ready():
 func _on_PressurePlate_body_entered(body: Node) -> void:
 	if body.is_in_group("TriggersPlates"):
 		objectsToDetect.append(body)
+		print("totototototot")
 		# Handle the state change here when a specific object enters the collision area
 
 func _on_PressurePlate_body_exited(body: Node) -> void:
