@@ -5,7 +5,6 @@ class_name MagneticRay
 enum POLARITIES{Negative=0, Positive=1}
 
 @export var polarity: POLARITIES
-@export var extendUntilWall: bool
 @export var rayLength: float
 @export var rayStrength: float
 

@@ -17,10 +17,10 @@ func _on_PressurePlate_body_entered(body: Node) -> void:
 	if body.is_in_group("TriggersPlates"):
 		if (polarity == POLARITIES.Negative && body.is_in_group("PositivePolarity")) || (polarity == POLARITIES.Positive && body.is_in_group("NegativePolarity")):
 			objectsToDetect.append(body)
-		# Handle the state change here when a specific object enters the collision area
+			# Handle the state change here when a specific object enters the collision area
 
 func _on_PressurePlate_body_exited(body: Node) -> void:
 	if body.is_in_group("TriggersPlates"):
 		if (polarity == POLARITIES.Negative && body.is_in_group("PositivePolarity")) || (polarity == POLARITIES.Positive && body.is_in_group("NegativePolarity")):
 			objectsToDetect.erase(body)
-		# Handle the state change here when a specific object exits the collision area
+			# Handle the state change here when a specific object exits the collision area
