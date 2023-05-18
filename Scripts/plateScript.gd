@@ -1,7 +1,10 @@
 extends Area2D
 
-
 var objectsToDetect = []
+
+enum POLARITIES{Negative=0, Positive=1}
+
+@export var polarity: POLARITIES
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,11 +15,12 @@ func _ready():
 
 func _on_PressurePlate_body_entered(body: Node) -> void:
 	if body.is_in_group("TriggersPlates"):
-		objectsToDetect.append(body)
-		print("totototototot")
+		if (polarity == POLARITIES.Negative && body.is_in_group("PositivePolarity")) || (polarity == POLARITIES.Positive && body.is_in_group("NegativePolarity")):
+			objectsToDetect.append(body)
 		# Handle the state change here when a specific object enters the collision area
 
 func _on_PressurePlate_body_exited(body: Node) -> void:
 	if body.is_in_group("TriggersPlates"):
-		objectsToDetect.erase(body)
+		if (polarity == POLARITIES.Negative && body.is_in_group("PositivePolarity")) || (polarity == POLARITIES.Positive && body.is_in_group("NegativePolarity")):
+			objectsToDetect.erase(body)
 		# Handle the state change here when a specific object exits the collision area
