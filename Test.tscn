@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4o2d40331tmd"]
+[gd_scene load_steps=11 format=3 uid="uid://b85q2jucjeoqt"]
 
 [ext_resource type="Script" path="res://Test.gd" id="1_jxbuf"]
 [ext_resource type="PackedScene" uid="uid://dpd7ytv61ilth" path="res://GameObjects/player_1.tscn" id="1_k1x30"]
 [ext_resource type="Script" path="res://Scripts/interactibleScript.gd" id="3_7ewnm"]
 [ext_resource type="Texture2D" uid="uid://dvg1y8wyaa3gf" path="res://icon.svg" id="3_shjwo"]
-[ext_resource type="Script" path="res://plateScript.gd" id="4_bkuxi"]
+[ext_resource type="Script" path="res://Scripts/plateScript.gd" id="5_ku804"]
 
 [sub_resource type="TileSet" id="TileSet_b23ip"]
 
@@ -59,7 +59,7 @@ texture = ExtResource("3_shjwo")
 
 [node name="PressurePlate" type="Area2D" parent="."]
 position = Vector2(-200, -100)
-script = ExtResource("4_bkuxi")
+script = ExtResource("5_ku804")
 
 [node name="Sprite2D" type="Sprite2D" parent="PressurePlate"]
 texture = ExtResource("3_shjwo")

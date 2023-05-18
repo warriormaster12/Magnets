@@ -1,6 +1,5 @@
 extends Area2D
 
-class_name PressurePlate
 
 var objectsToDetect = []
 
