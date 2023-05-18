@@ -25,7 +25,7 @@ func _enter_tree():
 @export var max_turn_speed = 10.0
 @export var min_turn_speed = 2.0
 
-func _process(delta):
+func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 	# Check for player movement input
 	var input_vector = Vector2.ZERO
@@ -55,9 +55,7 @@ func _process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration_vector.length() * delta)
 
 	# Move player
-	var node_position = position
-	node_position += velocity * delta
-	position = node_position
+	move_and_slide()
 	
 	# Get the direction to the mouse
 	var mouse_pos = get_global_mouse_position()
