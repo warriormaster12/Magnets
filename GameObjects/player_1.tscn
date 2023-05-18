@@ -29,12 +29,6 @@ texture = ExtResource("2_63x6k")
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_uyhen")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_uyhen")
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ug8av")
 
