@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpd7ytv61ilth"]
+[gd_scene load_steps=5 format=3 uid="uid://dpd7ytv61ilth"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_2uao6"]
 [ext_resource type="Texture2D" uid="uid://dvg1y8wyaa3gf" path="res://icon.svg" id="2_63x6k"]
-[ext_resource type="Script" path="res://Scripts/magnetismRay.gd" id="3_wv1xd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhen"]
 
@@ -17,7 +16,7 @@ properties/2/path = NodePath(".:polarity")
 properties/2/spawn = true
 properties/2/sync = true
 
-[node name="Player1" type="CharacterBody2D" groups=["Player"]]
+[node name="Player1" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_2uao6")
 polarity = 1
 
@@ -26,6 +25,12 @@ rotation = 1.5708
 texture = ExtResource("2_63x6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_uyhen")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_uyhen")
 
@@ -38,7 +43,4 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(76.898, 0)
-script = ExtResource("3_wv1xd")
-rayLength = 300.0
-rayStrength = 1000.0
+target_position = Vector2(50, 0)
