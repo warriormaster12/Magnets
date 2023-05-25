@@ -1,13 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1mxni741t1sp"]
+[gd_scene load_steps=4 format=3 uid="uid://csfv1jiaa4yik"]
 
-[ext_resource type="Script" path="res://plateScript.gd" id="1_s2sl8"]
 [ext_resource type="Texture2D" uid="uid://dvg1y8wyaa3gf" path="res://icon.svg" id="2_extnl"]
+
+[sub_resource type="GDScript" id="GDScript_kad7p"]
+script/source = "extends Area2D
+
+var objectsToDetect = []
+
+enum POLARITIES{Negative=0, Positive=1}
+
+@export var polarity: POLARITIES
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_collision_layer_value(4, true) # Set the collision layer(s) you want the pressure plate to interact with
+	set_collision_mask_value(4, true) # Set the collision mask(s) for the pressure plate
+	self.body_entered.connect(_on_PressurePlate_body_entered)
+	self.body_exited.connect(_on_PressurePlate_body_exited)
+
+func _on_PressurePlate_body_entered(body: Node) -> void:
+	if body.is_in_group(\"TriggersPlates\"):
+		if (polarity == POLARITIES.Negative && body.is_in_group(\"PositivePolarity\")) || (polarity == POLARITIES.Positive && body.is_in_group(\"NegativePolarity\")):
+			objectsToDetect.append(body)
+			# Handle the state change here when a specific object enters the collision area
+
+func _on_PressurePlate_body_exited(body: Node) -> void:
+	if body.is_in_group(\"TriggersPlates\"):
+		if (polarity == POLARITIES.Negative && body.is_in_group(\"PositivePolarity\")) || (polarity == POLARITIES.Positive && body.is_in_group(\"NegativePolarity\")):
+			objectsToDetect.erase(body)
+			# Handle the state change here when a specific object exits the collision area
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdoga"]
 
 [node name="PressurePlate" type="Area2D"]
 position = Vector2(-200, -100)
-script = ExtResource("1_s2sl8")
+script = SubResource("GDScript_kad7p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_extnl")
