@@ -7,7 +7,6 @@ script/source = "extends Area2D
 
 var objectsToDetect = []
 
-enum HASBOX{NO=0, YES=1}
 var detectBox:bool = false
 
 enum POLARITIES{Negative=0, Positive=1}

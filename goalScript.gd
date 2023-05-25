@@ -12,8 +12,6 @@ var count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_collision_layer_value(5, true) # Set the collision layer(s) you want the pressure plate to interact with
-	set_collision_mask_value(5, true) # Set the collision mask(s) for the pressure plate
 	for i in pressurePlatesNodes:
 		pressurePlates.append(get_node(i))
 
