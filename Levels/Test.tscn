@@ -1,16 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://od7ckgyvkvgy"]
+[gd_scene load_steps=8 format=3 uid="uid://od7ckgyvkvgy"]
 
 [ext_resource type="Script" path="res://Scripts/Test.gd" id="1_m80f1"]
 [ext_resource type="PackedScene" uid="uid://dpd7ytv61ilth" path="res://GameObjects/player_1.tscn" id="2_yxe2o"]
 [ext_resource type="PackedScene" uid="uid://2wh8ur6jaepf" path="res://GameObjects/box.tscn" id="3_s3d8l"]
 [ext_resource type="PackedScene" uid="uid://xuwbklr0c26c" path="res://GameObjects/wall.tscn" id="4_u81w1"]
 [ext_resource type="PackedScene" uid="uid://csfv1jiaa4yik" path="res://GameObjects/pressure_plate.tscn" id="5_istsk"]
-[ext_resource type="Script" path="res://goalScript.gd" id="6_1dbxf"]
-[ext_resource type="Texture2D" uid="uid://dvg1y8wyaa3gf" path="res://icon.svg" id="6_pg1yx"]
+[ext_resource type="PackedScene" uid="uid://rtplpvfckg4h" path="res://GameObjects/goal.tscn" id="6_75n8q"]
 
 [sub_resource type="TileSet" id="TileSet_b23ip"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p671"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_m80f1")
@@ -31,13 +28,4 @@ scale = Vector2(-0.871631, -0.863602)
 
 [node name="PressurePlate" parent="." instance=ExtResource("5_istsk")]
 
-[node name="Goal" type="Area2D" parent="."]
-position = Vector2(100, -200)
-script = ExtResource("6_1dbxf")
-pressurePlatesNodes = Array[NodePath]([NodePath("../PressurePlate")])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
-shape = SubResource("RectangleShape2D_4p671")
-
-[node name="Sprite2D" type="Sprite2D" parent="Goal"]
-texture = ExtResource("6_pg1yx")
+[node name="Goal" parent="." instance=ExtResource("6_75n8q")]

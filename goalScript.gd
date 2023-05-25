@@ -31,5 +31,5 @@ func _process(_delta):
 		_checkPlayers()
 
 func _checkPlayers():
-	# Called while all plates are active to see if players are on the goal (this object)
+	# Called while all plates are active to see if all players are on the goal (this object)
 	pass
