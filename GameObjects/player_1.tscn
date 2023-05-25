@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpd7ytv61ilth"]
+[gd_scene load_steps=8 format=3 uid="uid://dpd7ytv61ilth"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_2uao6"]
 [ext_resource type="Texture2D" uid="uid://dvg1y8wyaa3gf" path="res://icon.svg" id="2_63x6k"]
 [ext_resource type="Script" path="res://Scripts/magnetismRay.gd" id="3_wv1xd"]
+[ext_resource type="AudioStream" uid="uid://bud7571dsw04p" path="res://Sounds/magnet.wav" id="4_gmgps"]
+[ext_resource type="Script" path="res://Scripts/MagnetNoise.gd" id="5_6frrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhen"]
 
@@ -43,3 +45,10 @@ collision_mask = 2
 script = ExtResource("3_wv1xd")
 rayLength = 300.0
 rayStrength = 1000.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("RayCast")]
+stream = ExtResource("4_gmgps")
+pitch_scale = 1.14
+bus = &"Magnet"
+script = ExtResource("5_6frrt")
+RayCast = NodePath("../RayCast2D")
