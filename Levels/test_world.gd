@@ -61,6 +61,11 @@ func add_player(peer_id:int)->void:
 	else:
 		player.polarity = randi_range(Player.POLARITIES.Negative,Player.POLARITIES.Positive)
 		print(player.polarity)
+	if player.polarity == Player.POLARITIES.Positive:
+		player.global_position = $Position1.global_position
+	else:
+		player.global_position = $Position2.global_position
+	$LevelCamera.enabled = true
 func remove_player(peer_id:int)->void:
 	var player = get_node_or_null(str(peer_id))
 	if player:

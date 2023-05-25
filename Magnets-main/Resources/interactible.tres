@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Interactible" load_steps=2 format=3 uid="uid://nr51i2gvlxow"]
-
-[ext_resource type="Script" path="res://Scripts/interactibleScript.gd" id="1_8obs0"]
-
-[resource]
-script = ExtResource("1_8obs0")
-interactible_name = ""
-polarity = 0
-movable = false
