@@ -7,8 +7,10 @@ script/source = "extends Area2D
 
 var objectsToDetect = []
 
-enum POLARITIES{Negative=0, Positive=1}
+enum HASBOX{NO=0, YES=1}
+var detectBox:bool = false
 
+enum POLARITIES{Negative=0, Positive=1}
 @export var polarity: POLARITIES
 
 # Called when the node enters the scene tree for the first time.
@@ -23,15 +25,18 @@ func _on_PressurePlate_body_entered(body: Node) -> void:
 		if (polarity == POLARITIES.Negative && body.is_in_group(\"PositivePolarity\")) || (polarity == POLARITIES.Positive && body.is_in_group(\"NegativePolarity\")):
 			objectsToDetect.append(body)
 			# Handle the state change here when a specific object enters the collision area
+			detectBox = true
 
 func _on_PressurePlate_body_exited(body: Node) -> void:
 	if body.is_in_group(\"TriggersPlates\"):
 		if (polarity == POLARITIES.Negative && body.is_in_group(\"PositivePolarity\")) || (polarity == POLARITIES.Positive && body.is_in_group(\"NegativePolarity\")):
 			objectsToDetect.erase(body)
 			# Handle the state change here when a specific object exits the collision area
+			detectBox = false
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdoga"]
+size = Vector2(50, 50)
 
 [node name="PressurePlate" type="Area2D"]
 position = Vector2(-200, -100)
