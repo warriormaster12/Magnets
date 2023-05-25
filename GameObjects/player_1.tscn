@@ -39,6 +39,7 @@ position_smoothing_speed = 2.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(76.898, 0)
+collision_mask = 2
 script = ExtResource("3_wv1xd")
 rayLength = 300.0
 rayStrength = 1000.0
